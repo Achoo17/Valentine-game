@@ -3,114 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine Quest Deluxe</title>
+<title>Mysterious Valentine Quest with Riddles</title>
 <style>
-    body {
-        font-family: 'Segoe UI', sans-serif;
-        background: #ffe6f0;
-        color: #330033;
-        text-align: center;
-        padding: 50px;
-    }
-    h1 { font-size: 2em; color: #cc0066; }
-    button {
-        background: #ff66b3;
-        color: white;
-        border: none;
-        padding: 15px 30px;
-        font-size: 1em;
-        border-radius: 10px;
-        cursor: pointer;
-        margin: 10px;
-    }
-    button:hover { background: #ff3399; }
-    #game-container {
-        max-width: 700px;
-        margin: auto;
-        padding: 20px;
-        background: #fff0f5;
-        border-radius: 20px;
-        box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
-    }
-    img { max-width: 200px; margin-top: 20px; }
-    .heart { color: red; font-size: 1.5em; margin: 0 5px; }
+body {
+font-family: 'Segoe UI', sans-serif;
+background: #0f0f1f;
+color: #f0f0f5;
+text-align: center;
+padding: 30px;
+}
+h1 {
+color: #ff66b3;
+text-shadow: 0 0 10px #ff66b3;
+}
+#game-container {
+max-width: 700px;
+margin: auto;
+padding: 25px;
+background: #1a1a2e;
+border-radius: 20px;
+box-shadow: 0 0 20px rgba(255, 102, 179, 0.5);
+}
+button {
+background: #ff66b3;
+color: #0f0f1f;
+border: none;
+padding: 15px 30px;
+font-size: 1em;
+border-radius: 12px;
+cursor: pointer;
+margin: 10px;
+box-shadow: 0 0 10px #ff66b3;
+}
+button:hover {
+background: #ff3399;
+box-shadow: 0 0 20px #ff3399;
+}
+#game-text {
+font-size: 1.2em;
+margin: 20px 0;
+}
+img {
+max-width: 250px;
+margin-top: 20px;
+border-radius: 15px;
+box-shadow: 0 0 15px #ff66b3;
+}
 </style>
 </head>
 <body>
 
 <div id="game-container">
-    <h1>🎮 Valentine Quest Deluxe</h1>
-    <p id="game-text">Welcome, brave hero! Your quest: Rescue your Valentine 💖</p>
-    <div id="game-buttons">
-        <button onclick="nextStep(1)">Start Quest</button>
-    </div>
-    <p id="hearts"></p>
+<h1>🕯️ Riddle Quest 🕯️</h1>
+<p id="game-text">You awaken in a dark room. Something mysterious is waiting…</p>
+<div id="game-buttons">
+<button onclick="nextStep()">Start the Quest</button>
+</div>
 </div>
 
 <script>
 let step = 0;
-let collectedHearts = 0;
 
 function nextStep(choice){
-    const text = document.getElementById('game-text');
-    const buttons = document.getElementById('game-buttons');
-    const hearts = document.getElementById('hearts');
-    step++;
+const text = document.getElementById("game-text");
+const buttons = document.getElementById("game-buttons");
+buttons.innerHTML = "";
 
-    buttons.innerHTML = ''; // clear buttons
+step++;
 
-    switch(step){
-        case 1:
-            text.innerHTML = "A mischievous monster blocks your path! How do you handle it?";
-            buttons.innerHTML = `
-                <button onclick="nextStep(2)">Give it a cookie 🍪</button>
-                <button onclick="nextStep(2)">Charm it with a smile 😄</button>
-            `;
-            break;
+switch(step){
+case 1:
+text.innerHTML = "Two doors stand before you. A voice whispers a riddle:<br>“I speak without a mouth and hear without ears. I have nobody, but I come alive with wind. What am I?”";
+buttons.innerHTML = `
+<button onclick="nextStep()">An Echo 🗣️</button>
+<button onclick="nextStep()">A Ghost 👻</button>
+`;
+break;
 
-        case 2:
-            text.innerHTML = "Monster defeated! Collect 3 hearts to cross the rainbow bridge 🌈";
-            buttons.innerHTML = `
-                <button onclick="collectHeart()">Collect Heart 1 ❤️</button>
-            `;
-            break;
+case 2:
+text.innerHTML = "A shadow blocks your path and asks another riddle:<br>“What has keys but can't open locks?”";
+buttons.innerHTML = `
+<button onclick="nextStep()">A Piano 🎹</button>
+<button onclick="nextStep()">A Map 🗺️</button>
+`;
+break;
 
-        case 6:
-            text.innerHTML = "A dragon appears! What’s your strategy?";
-            buttons.innerHTML = `
-                <button onclick="nextStep(7)">Use love magic 💘</button>
-                <button onclick="nextStep(7)">Distract it with dad jokes 😆</button>
-            `;
-            break;
+case 3:
+text.innerHTML = "A chest appears with a note:<br>“The more of this you take, the more you leave behind. What is it?”";
+buttons.innerHTML = `
+<button onclick="nextStep()">Footsteps 👣</button>
+<button onclick="nextStep()">Time ⏳</button>
+`;
+break;
 
-        case 7:
-            text.innerHTML = "The dragon laughs and flies away! Quest complete!";
-            buttons.innerHTML = `
-                <button onclick="nextStep(8)">Claim your reward ❤️</button>
-            `;
-            break;
+case 4:
+text.innerHTML = "The chest opens! Mist swirls around. Another riddle floats in the air:<br>“What has hands but cannot clap?”";
+buttons.innerHTML = `
+<button onclick="nextStep()">A Clock ⏰</button>
+<button onclick="nextStep()">A Statue 🗿</button>
+`;
+break;
 
-        case 8:
-            text.innerHTML = "🏆 Achievement Unlocked: My Valentine 💖";
-            buttons.innerHTML = `
-                <img src="https://media.giphy.com/media/26BRrSvJUa0crqw4E/giphy.gif" alt="Hearts Animation">
-                <p>Congratulations! You’re my Valentine! 😘</p>
-            `;
-            break;
-    }
+case 5:
+text.innerHTML = "You step through the mist and see a scroll. Last riddle before the reveal:<br>“I’m tall when I’m young, short when I’m old. What am I?”";
+buttons.innerHTML = `
+<button onclick="nextStep()">A Candle 🕯️</button>
+<button onclick="nextStep()">A Tree 🌳</button>
+`;
+break;
+
+case 6:
+// FINAL REVEAL
+text.innerHTML = "The scroll unrolls, glowing letters appear… and a booming (but playful) voice says:";
+buttons.innerHTML = "";
+const container = document.getElementById("game-container");
+container.innerHTML += `
+<h1>🎉 Surprise! 🎉</h1>
+<p>Will you… be my Valentine? 😘💖</p>
+<img src="https://media.giphy.com/media/26BRrSvJUa0crqw4E/giphy.gif" alt="Hearts GIF">
+`;
+break;
 }
-
-function collectHeart(){
-    collectedHearts++;
-    const hearts = document.getElementById('hearts');
-    hearts.innerHTML += '<span class="heart">❤️</span>';
-
-    if(collectedHearts < 3){
-        document.getElementById('game-buttons').innerHTML = `<button onclick="collectHeart()">Collect Heart ${collectedHearts+1} ❤️</button>`;
-    } else {
-        document.getElementById('game-buttons').innerHTML = `<button onclick="nextStep(6)">Cross the bridge 🌉</button>`;
-        document.getElementById('game-text').innerHTML = "All hearts collected! Now cross the rainbow bridge!";
-    }
 }
 </script>
 
